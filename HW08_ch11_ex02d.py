@@ -17,27 +17,58 @@
 
 # Body
 def invert_dict_old(d):
-    inverse = dict()
-    for key in d:
-        val = d[key]
-        if val not in inverse:
-            inverse[val] = [key]
+    inverse = dict() # estalishes an empty dictionary
+    for key, val in dict_.items(): 
+        val = d[key] # set the value of each key equal to 'val'
+        if val not in inverse: # and check to see if 'val' is not in the inverse dictionary.
+            inverse[val] = [key] # if it's not in the dictionary, then add it to the dictionary and set it's value to the key from the argument dictioanry
         else:
-            inverse[val].append(key)
+            inverse[val].append(key) # if 'val' is a key in the dictionary already, then add the argument-dictionary's key to the list-value for that key
     return inverse
 
 
 def invert_dict_new(d):
-    pass
+    inverse = dict() # estalishes an empty dictionary
+    for key, val in d.items():
+        val = d[key] # set the value of each key equal to 'val'
+        if val not in inverse: # and check to see if 'val' is not in the inverse dictionary.
+            inverse[val] = [key] # if it's not in the dictionary, then add it to the dictionary and set it's value to the key from the argument dictioanry
+        else:
+            inverse[val].append(key) # if 'val' is a key in the dictionary already, then add the argument-dictionary's key to the list-value for that key
+    return inverse
 
 
 def print_hist_newest(d):
-    pass
+    for key, value in sorted(d.items()): # for each key and value in the inverted dictionary, return the sorted inverted dictionary as a list.
+        print(key, value) # print each 'key', 'value' pair
+
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
 ###############################################################################
+def histogram_old(s):
+    d = dict()
+    for key in s: # for each letter in string
+        d[key] = 1 + d.get(key, 0) # check to see if the letter is in the dictionary. If not, return 0. Then establish that letter as a value in the dictionary and set the value equal to '0' + 1. 
+    return d # return the dictionary with the new letters as keys. 
 
+def histogram_new(pledge_list):
+    pledge_dict = {}
+    for key in pledge_list:
+        pledge_dict[key] = 1 + pledge_dict.get(key, 0) 
+    return pledge_dict
+
+def get_pledge_list():
+    """ Opens pledge.txt and converts to a list, each item is a word in
+    the order it appears in the original file. returns the list.
+    """
+    # Your code here.
+    pledge_list = []
+    pledge_list_lines = []
+    with open("pledge.txt","r") as pledge:
+        pledge_string = pledge.read()
+        pledge_list = pledge_string.split()
+    return pledge_list #(uncomment this)
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################

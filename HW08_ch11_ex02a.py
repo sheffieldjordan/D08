@@ -23,21 +23,23 @@
 
 
 # Body
-pledge_histogram = {}
 
 
 def histogram_old(s):
     d = dict()
-    for c in s:
-        if c not in d:
-            d[c] = 1
-        else:
-            d[c] += 1
-    return d
+    for key in s: # for each letter in string
+        d[key] = 1 + d.get(key, 0) # check to see if the letter is in the dictionary. If not, return 0. Then establish that letter as a value in the dictionary and set the value equal to '0' + 1. 
+    return d # return the dictionary with the new letters as keys. 
 
 
-def histogram_new(s):
-    ...
+
+def histogram_new(pledge_list):
+    pledge_dict = {}
+    for key in pledge_list:
+        pledge_dict[key] = 1 + pledge_dict.get(key, 0) 
+    return pledge_dict
+
+    
 
 
 def get_pledge_list():
@@ -45,9 +47,13 @@ def get_pledge_list():
     the order it appears in the original file. returns the list.
     """
     # Your code here.
-    pass
-    # return pledge_list (uncomment this)
-
+    pledge_list = []
+    pledge_list_lines = []
+    with open("pledge.txt","r") as pledge:
+        pledge_string = pledge.read()
+        pledge_list = pledge_string.split()
+    return pledge_list #(uncomment this)
+    
 
 ###############################################################################
 def main():  # DO NOT CHANGE BELOW

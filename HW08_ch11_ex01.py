@@ -10,11 +10,18 @@
 
 # Body
 def store_to_dict():
-    pass
-
+	words_dict = {} #establish an empty dictionary
+	with open("words.txt", "r") as words: #opens the file and assigns 'words' as the file handle
+		lines = words.readlines() # converts each line of the file into a list; set that list equal to the lines variable
+		for item in lines: #for the objects within 'lines', do the following:
+			words_dict[item.strip()] = 0 # strip the characters, then establish them as keys in the empty dictionary, and set their values equal to 0.  
+    #store each word in dictionary[key]
+	
+	return words_dict
 
 ###############################################################################
 def main():  # DO NOT CHANGE BELOW
+    # print(store_to_dict)
     words_dict = store_to_dict()
     if "this" in words_dict:
         print("Yup.")
